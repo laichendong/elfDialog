@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+	<title>elf-dialog-demo</title> 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../elfDialog.js"></script>
+	
+	<style>
+		*{
+			font-size:12px;
+		}
+		.code{
+			border:1px dashed #666;
+			background:#ccc;
+			padding:5px;
+			display:none;
+		}
+		.codeTrigger{
+			padding:10px;
+		}
+	</style>
+</head>  
+  
+<body> 
+
+	<h1>欢迎使用elfDialogM<h1>
+	
+	<dl>
+		<dt><a id="bascAlert" href="#">基本alert</a><a class="codeTrigger" href="#">code</a></dt>
+		<dd>最基本的alert提示。</dd>
+		<dd class="code"><pre>ElfDialog.alert("hello elf dialog.");</pre></dd>
+	</dl>
+
+	<script type="text/javascript">
+	$(function(){
+		$(".codeTrigger").click(function(){
+			$(this).parent().next(".code").toggle(300);
+		});
+	
+		$("#bascAlert").click(function(){
+			ElfDialog.alert("hello elf dialog.");
+		});
+	});
+	</script>
+</body>  
+</html> 
+
