@@ -30,7 +30,7 @@ var ElfDialog = {
 		buttons : {},
 		overlay : true,
 		overlayOpt : {
-			opacity : 0.5,
+			opacity : 0.2,
 			color : "#000",
 			fadeIn : 300
 		},
@@ -144,7 +144,7 @@ var ElfDialog = {
 		return result;
 	},
 	_createDomAsJq : function(){
-		return $('<div class="elfDialogWarpper"><div class="elfDialogMain"><div class="elfDialogAlpha"></div><div class="elfDialog"><h4 class="elfDialogTitle clearfix"><p class="elfDialogTitleContent f_l"></P><a href="javascript:ElfDialog.close();" class="elfDialogCloser f_r">X</a></h4><div class="elfDialogContent"></div><div class="elfDialogButtonBar"></div></div></div></div>');
+		return $('<div class="elfDialogWarpper"><div class="elfDialogMain"><div class="elfDialog"><h4 class="elfDialogTitle clearfix"><p class="elfDialogTitleContent f_l"></P><a href="javascript:ElfDialog.close();" class="elfDialogCloser f_r">X</a></h4><div class="elfDialogContent"></div><div class="elfDialogButtonBar"></div></div></div></div>');
 	},
 	_setSize : function(width, height){
 		var elfDialog = $("body").find(".elfDialog");
@@ -154,10 +154,10 @@ var ElfDialog = {
 		if(height){
 			elfDialog.height(height);
 		}
-		$("body").find(".elfDialogAlpha").width(elfDialog.width()+27).height(elfDialog.height()+27);
-		//27px = 5px paddingLeft + 5px paddingRight + 1px borderLefr + 1px borderRight + 8px left + 8px right -1px alpha borderLeft
-		//27px = 5px paddingTop + 5px paddingBottom + 1px borderTop + 1px borderBottom + 8px top + 8px bottom -1px alpha borderTop
-		
+		$("body").find(".elfDialogMain")
+			.width(elfDialog.outerWidth())
+			.height(elfDialog.outerHeight());
+
 		//修正buttonBar的位置
 //		if($("body").find(".elfDialogButtonBar :button").length > 0){
 //			$("body").find(".elfDialog").css({
@@ -201,5 +201,5 @@ $(function(){
 			ElfDialog.close();
 		}
 	});
-	$('<style>.elfDialogWarpper { 	width: 100%; 	height: 100%; 	z-index: 888; 	position: absolute; 	top: 0; 	left: 0; }  .elfDialogWarpper * { 	margin:0; padding:0;}	.elfDialogMain { 	float:left;/*为了产生“包裹”效果*/ 	display:none; 	position: fixed; 	left: 0px; 	top: 0px; }  .elfDialogAlpha { 	position: relative;	background: rgba(0,0,0,0.2); 	border: 1px solid #aaa; 	border-radius: 8px; 	-moz-border-radius: 8px; 	-webkit-border-radius: 8px; }  .elfDialog { 	position: absolute; 	width: 260px; 	min-height: 25px;	   padding:5px; 	background: #fff; 	background: rgba(255, 255, 255, 0.9); 	border: 1px solid #666; 	border-radius: 6px; 	-moz-border-radius: 6px; 	-webkit-border-radius: 6px; 	top: 8px; 	left: 8px;  }  .elfDialogContent{overflow:hidden;}  .elfDialogTitle { 	background: #0066AA; 	border: none; 	border-radius: 5px; 	-moz-border-radius: 5px; 	-webkit-border-radius: 5px; 	border-bottom-left-radius: 0; 	-moz-border-radius-bottomleft: 0; 	-webkit-border-bottom-left-radius: 0; 	border-bottom-right-radius: 0; 	-moz-border-radius-bottomright: 0; 	-webkit-border-bottom-right-radius: 0; }  .elfDialogTitle .elfDialogTitleContent { 	text-indent: 1em; 	height: 26px; 	line-height: 26px; 	color: #fff; 	text-shadow:-1px -1px 0 #000; }  .elfDialogTitle .elfDialogCloser { 	display: block; 	cursor:pointer; 	width: 16px; 	height: 16px; 	border: 1px solid #A7190F; 	font: bold 12px/16px "lucida Grande", Verdana; 	text-align: center; 	color: #fff; 	text-decoration: none; 	background: #DC4835; 	margin:4px 8px 0 0; 	border-radius: 3px; 	-moz-border-radius: 3px; 	-webkit-border-radius: 3px; } .elfDialogTitle .elfDialogCloser:hover{ 	text-decoration: none; 	background:#EA7759; 	box-shadow: 0px 0px 3px #fff; 	-moz-box-shadow: 0px 0px 3px #fff; 	-webkit-box-shadow: 0px 0px 3px #fff; }  .elfDialogButtonBar{ 	text-align:right; }  .f_l{float:left; _display:inline;} .f_r{float:right; _display:inline;} .clearfix:after {content:" "; display:block; clear:both; visibility:hidden; _line-height:0; height:0; } .clearfix {display: inline-block; } html[xmlns] .clearfix {display: block; }</style>').appendTo($("body"));
+	$('<style>.elfDialogWarpper { 	width: 100%; 	height: 100%; 	z-index: 888; 	position: absolute; 	top: 0; 	left: 0; }  .elfDialogWarpper * { 	margin:0; padding:0;}	.elfDialogMain { 	float:left;/*为了产生“包裹”效果*/ 	display:none; 	border:5px solid transparent; box-shadow:0 0 20px rgba(0, 0, 0, 0.4);	border-radius:6px; 	position: fixed; 	left: 0px; 	top: 0px; }  .elfDialog { 	width: 260px; 	min-height: 25px;	   padding:5px; 	background: #fff; 	background: rgba(255, 255, 255, 0.9); 	border-radius: 6px; 	-moz-border-radius: 6px; 	-webkit-border-radius: 6px; }  .elfDialogContent{overflow:hidden;}  .elfDialogTitle { 	background: #0066AA; 	border: none; 	border-radius: 5px; 	-moz-border-radius: 5px; 	-webkit-border-radius: 5px; 	border-bottom-left-radius: 0; 	-moz-border-radius-bottomleft: 0; 	-webkit-border-bottom-left-radius: 0; 	border-bottom-right-radius: 0; 	-moz-border-radius-bottomright: 0; 	-webkit-border-bottom-right-radius: 0; }  .elfDialogTitle .elfDialogTitleContent { 	text-indent: 1em; 	height: 26px; 	line-height: 26px; 	color: #fff; 	text-shadow:-1px -1px 0 #000; }  .elfDialogTitle .elfDialogCloser { 	display: block; 	cursor:pointer; 	width: 16px; 	height: 16px; 	border: 1px solid #A7190F; 	font: bold 12px/16px "lucida Grande", Verdana; 	text-align: center; 	color: #fff; 	text-decoration: none; 	background: #DC4835; 	margin:4px 8px 0 0; 	border-radius: 3px; 	-moz-border-radius: 3px; 	-webkit-border-radius: 3px; } .elfDialogTitle .elfDialogCloser:hover{ 	text-decoration: none; 	background:#EA7759; 	box-shadow: 0px 0px 3px #fff; 	-moz-box-shadow: 0px 0px 3px #fff; 	-webkit-box-shadow: 0px 0px 3px #fff; }  .elfDialogButtonBar{ 	text-align:right; }  .f_l{float:left; _display:inline;} .f_r{float:right; _display:inline;} .clearfix:after {content:" "; display:block; clear:both; visibility:hidden; _line-height:0; height:0; } .clearfix {display: inline-block; } html[xmlns] .clearfix {display: block; }</style>').appendTo($("body"));
 });
