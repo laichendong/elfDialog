@@ -1,1 +1,1 @@
-elfDialog 一个简易对话框实现
+elfDialog 涓�涓畝鏄撳璇濇瀹炵幇
