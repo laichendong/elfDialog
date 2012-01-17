@@ -24,22 +24,50 @@
   
 <body> 
 
-	<h1>欢迎使用elfDialogM<h1>
+	<h1>欢迎使用elfDialog<h1>
 	
 	<dl>
 		<dt><a id="bascAlert" href="#">基本alert</a><a class="codeTrigger" href="#">code</a></dt>
 		<dd>最基本的alert提示。</dd>
 		<dd class="code"><pre>ElfDialog.alert("hello elf dialog.");</pre></dd>
+			
+		<dt><a id="alertWithTitle" href="#">有标题的alert</a><a class="codeTrigger" href="#">code</a></dt>
+		<dd>最有标题的alert提示。</dd>
+		<dd class="code"><pre>ElfDialog.alert("hello elf dialog.", "alert title");</pre></dd>
+			
+		<dt><a id="alertWithFunction" href="#">按钮事件响应alert</a><a class="codeTrigger" href="#">code</a></dt>
+		<dd>"知道了"按钮支持自定义事件响应函数。</dd>
+		<dd class="code">
+		<pre>
+ElfDialog.alert("hello elf dialog.", "alert title", function(){
+	// do something
+	alert("按我干嘛？");
+	ElfDialog.close();
+});
+		</pre>
+		</dd>
 	</dl>
 
 	<script type="text/javascript">
 	$(function(){
 		$(".codeTrigger").click(function(){
-			$(this).parent().next(".code").toggle(300);
+			$(this).parent().next().next(".code").toggle(300);
 		});
 	
 		$("#bascAlert").click(function(){
 			ElfDialog.alert("hello elf dialog.");
+		});
+
+		$("#alertWithTitle").click(function(){
+			ElfDialog.alert("hello elf dialog.", "alert title");
+		});
+
+		$("#alertWithFunction").click(function(){
+			ElfDialog.alert("hello elf dialog.", "alert title", function(){
+				// do something
+				alert("按我干嘛？");
+				ElfDialog.close();
+			});
 		});
 	});
 	</script>
