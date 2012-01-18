@@ -98,6 +98,32 @@ elfDialog 一个简易对话框实现
 		}
 	}
 
+----
+
+**overlay**	*dataType:*`Boolean`	*default:*`true`
+
+是否使用遮罩层。
+
+----
+
+**overlayOpt**	*dataType:*`Object`	*default:*
+
+	{
+		opacity : 0.2, 
+		color : "#000",
+		fadeIn : 300
+	}
+
+遮罩层配置。
+
+
+----
+
+**autoClose**	*dataType:*`int`	*default:*`0`
+
+对话框自动关闭延迟时间。0表示不自动关闭。单位为毫秒。
+
+
 
 
 
