@@ -40,6 +40,7 @@ elfDialog 一个简易对话框实现
 
 ###submit
 **dataType:**`Object`	**default:**
+
 	{
 		btnText : "知道了",
 		callBack : function(){
