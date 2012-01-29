@@ -185,8 +185,11 @@ var ElfDialog = {
 				"opacity" : overlaySettings.opacity
 			})
 			.width($(document).width())
-			.height($(document).height());
-		$("body").append(elfDialogOverlay.hide());
+			.height($(document).height())
+            .click(function(){
+                ElfDialog.close();
+            });
+		$(".elfDialogMain").before(elfDialogOverlay.hide());
 		//检查遮盖层进入方式
 		if(this.settings.fadeIn){
 			elfDialogOverlay.fadeIn(overlaySettings.fadeIn);
@@ -201,5 +204,5 @@ $(function(){
 			ElfDialog.close();
 		}
 	});
-	$('<style>.elfDialogMain * { margin:0; padding:0; z-index:888; } .elfDialogMain { float:left;/*为了产生“包裹”效果*/ display:none; border:5px solid rgba(0, 0, 0, 0.5); box-shadow:0 0 5px rgba(0, 0, 0, 0.4); border-radius:5px; position: fixed; left: 0px; top: 0px; } .elfDialog { width: 260px; min-height: 25px; background: #fff; border: 1px solid #666666;} .elfDialogContent{overflow:hidden; padding:5px; border-top: 1px solid #F2F2F2;} .elfDialogTitle { background: #f5f5f5; border-bottom: 1px solid #D9D9D9; } .elfDialogTitle .elfDialogTitleContent { text-indent: 1em; height: 26px; line-height: 26px; color: #2A2A2A; text-shadow:-1px -1px 0 #fff; } .elfDialogTitle .elfDialogCloser { display: block; cursor:pointer; width: 16px; height: 16px; font: bold 12px/16px Verdana; text-align: center; color: #ccc; text-decoration: none; margin:4px 8px 0 0; } .elfDialogTitle .elfDialogCloser:hover{ text-decoration: none; color: #999;} .elfDialogButtonBar{ text-align:right; padding:5px;} .f_l{float:left; _display:inline;} .f_r{float:right; _display:inline;} .clearfix:after {content:" "; display:block; clear:both; visibility:hidden; _line-height:0; height:0; } .clearfix {display: inline-block; } html[xmlns] .clearfix {display: block; }</style>').appendTo($("body"));
+	$('<style>.elfDialogMain * { margin:0; padding:0; z-index:888; } .elfDialogMain {background:#fff; float:left;/*为了产生“包裹”效果*/ display:none; border:5px solid rgba(0, 0, 0, 0.5); box-shadow:0 0 5px rgba(0, 0, 0, 0.4); border-radius:5px; position: fixed; left: 0px; top: 0px; } .elfDialog { width: 260px; min-height: 25px; background: #fff; border: 1px solid #666666;} .elfDialogContent{overflow:hidden; padding:5px; border-top: 1px solid #F2F2F2;} .elfDialogTitle { background: #f5f5f5; border-bottom: 1px solid #D9D9D9; } .elfDialogTitle .elfDialogTitleContent { text-indent: 1em; height: 26px; line-height: 26px; color: #2A2A2A; text-shadow:-1px -1px 0 #fff; } .elfDialogTitle .elfDialogCloser { display: block; cursor:pointer; width: 16px; height: 16px; font: bold 12px/16px Verdana; text-align: center; color: #ccc; text-decoration: none; margin:4px 8px 0 0; } .elfDialogTitle .elfDialogCloser:hover{ text-decoration: none; color: #999;} .elfDialogButtonBar{ text-align:right; padding:5px;} .f_l{float:left; _display:inline;} .f_r{float:right; _display:inline;} .clearfix:after {content:" "; display:block; clear:both; visibility:hidden; _line-height:0; height:0; } .clearfix {display: inline-block; } html[xmlns] .clearfix {display: block; }</style>').appendTo($("body"));
 });
