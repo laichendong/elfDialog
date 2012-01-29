@@ -124,6 +124,10 @@ elfDialog 一个简易对话框实现
 对话框自动关闭延迟时间。0表示不自动关闭。单位为毫秒。
 
 
+示例截图
+--------
 
+普通对话框
+![普通对话框](https://github.com/laichendong/elfDialog/raw/master/screenshots/dialog.png)
 
 
