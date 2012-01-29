@@ -100,7 +100,7 @@ elfDialog 一个简易对话框实现
 
 ----
 
-**overlay**	*dataType:*`Boolean`	*default:*`true`
+**overlay**	*dataType:*`Boolean`	*default:*`false`
 
 是否使用遮罩层。
 
