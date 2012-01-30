@@ -128,6 +128,9 @@ elfDialog 一个简易对话框实现
 --------
 
 普通对话框
+
 ![普通对话框](https://github.com/laichendong/elfDialog/raw/master/screenshots/dialog.png)
 
+确认对话框
 
+![确认对话框](https://github.com/laichendong/elfDialog/raw/master/screenshots/confirm.png)
