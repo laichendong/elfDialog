@@ -10,15 +10,6 @@
 		*{
 			font-size:12px;
 		}
-		.code{
-			border:1px dashed #666;
-			background:#ccc;
-			padding:5px;
-			display:none;
-		}
-		.codeTrigger{
-			padding:10px;
-		}
 	</style>
 </head>  
   
@@ -27,45 +18,54 @@
 	<h1>欢迎使用elfDialog<h1>
 	
 	<dl>
-		<dt><a id="bascAlert" href="#">基本alert</a><a class="codeTrigger" href="#">code</a></dt>
+			
+		<dt><a id="pop" href="#">pop</a></dt>
+		<dd>Just pop. 用于简单的提示,3秒钟后自动关闭</dd>
+			
+		<dt><a id="bascAlert" href="#">基本alert</a></dt>
 		<dd>最基本的alert提示。</dd>
-		<dd class="code"><pre>ElfDialog.alert("hello elf dialog.");</pre></dd>
 			
-		<dt><a id="alertWithTitle" href="#">有标题的alert</a><a class="codeTrigger" href="#">code</a></dt>
+		<dt><a id="alertWithTitle" href="#">有标题的alert</a></dt>
 		<dd>最有标题的alert提示。</dd>
-		<dd class="code"><pre>ElfDialog.alert("hello elf dialog.", "alert title");</pre></dd>
 			
-		<dt><a id="alertWithFunction" href="#">按钮事件响应alert</a><a class="codeTrigger" href="#">code</a></dt>
+		<dt><a id="alertWithFunction" href="#">按钮事件响应alert</a></dt>
 		<dd>"知道了"按钮支持自定义事件响应函数。</dd>
-		<dd class="code">
-		<pre>
-ElfDialog.alert("hello elf dialog.", "alert title", function(){
-	// do something
-	alert("按我干嘛？");
-	ElfDialog.close();
-});
-		</pre>
-		</dd>
+			
+		<dt><a id="confirm" href="#">confirm</a></dt>
+		<dd>需要用户做选择的消息提示</dd>
 	</dl>
+
 
 	<script type="text/javascript">
 	$(function(){
-		$(".codeTrigger").click(function(){
-			$(this).parent().next().next(".code").toggle(300);
+		$("#pop").click(function(){
+			ElfDialog.pop("just pop some message.");
 		});
-	
+
 		$("#bascAlert").click(function(){
 			ElfDialog.alert("hello elf dialog.");
 		});
 
 		$("#alertWithTitle").click(function(){
-			ElfDialog.alert("hello elf dialog.", "alert title");
+			ElfDialog.alert("hello elf dialog.", "标题文字");
 		});
 
 		$("#alertWithFunction").click(function(){
 			ElfDialog.alert("hello elf dialog.", "alert title", function(){
 				// do something
 				alert("按我干嘛？");
+				ElfDialog.close();
+			});
+		});
+
+		$("#confirm").click(function(){
+			ElfDialog.confirm("确定删除这条记录吗？", "删除", function(){
+				// confirm do something
+				alert("删了");
+				ElfDialog.close();
+			}, function(){
+				// cancel do something
+				alert("没删");
 				ElfDialog.close();
 			});
 		});
