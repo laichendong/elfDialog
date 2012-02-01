@@ -22,17 +22,20 @@
 		<dt><a id="pop" href="#">pop</a></dt>
 		<dd>Just pop. 用于简单的提示,3秒钟后自动关闭</dd>
 			
-		<dt><a id="bascAlert" href="#">基本alert</a></dt>
+		<dt><a id="bascAlert" href="#">bascAlert</a></dt>
 		<dd>最基本的alert提示。</dd>
 			
-		<dt><a id="alertWithTitle" href="#">有标题的alert</a></dt>
+		<dt><a id="alertWithTitle" href="#">alertWithTitle</a></dt>
 		<dd>最有标题的alert提示。</dd>
 			
-		<dt><a id="alertWithFunction" href="#">按钮事件响应alert</a></dt>
+		<dt><a id="alertWithFunction" href="#">alertWithFunction</a></dt>
 		<dd>"知道了"按钮支持自定义事件响应函数。</dd>
 			
 		<dt><a id="confirm" href="#">confirm</a></dt>
 		<dd>需要用户做选择的消息提示</dd>
+		
+		<dt><a id="customerDialog" href="#">customerDialog</a></dt>
+		<dd>复杂的自定义对话框</dd>
 	</dl>
 
 
@@ -67,6 +70,24 @@
 				// cancel do something
 				alert("没删");
 				ElfDialog.close();
+			});
+		});
+		
+		$("#customerDialog").click(function(){
+			ElfDialog.dialog({
+				type : "dialog",
+				width : 360,
+				height : 160,
+				title : "登录",
+				value : '<p><label>用户名：<input type="text" name="userName" /></label></P><p><label>密码：<input type="password" name="password" /></label></P><p>这里可以任意的HTML代码,或者jQuery对象，或者dom对象</p>',
+				buttons : {
+					"登录" : function(){
+						// do something
+						alert("登录成功");
+						ElfDialog.close();
+					}
+				},
+				overlay : true
 			});
 		});
 	});

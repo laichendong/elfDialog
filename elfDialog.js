@@ -78,6 +78,8 @@ var ElfDialog = {
 	},
 	dialog : function(options){
 		
+		$("body").find(".elfDialogMain, .elfDialogOverlay").remove();
+		
 		this.settings = $.extend(true, {}, this._option, options); 
 		var dialog = $("body").append(this._createDomAsJq()).find(".elfDialogMain");
 		
@@ -135,8 +137,9 @@ var ElfDialog = {
 		return dialog;
 	},
 	close : function(){
-		$("body").find(".elfDialogOverlay").remove()
-			.end().find(".elfDialogMain").fadeOut(300,function(){
+		$("body").find(".elfDialogOverlay").fadeOut(this.settings.overlayOpt.fadeIn, function(){
+				$(this).remove();
+			}).end().find(".elfDialogMain").fadeOut(300,function(){
 				$(this).remove();
 			});
 		var result = this.settings.afterClose();
@@ -156,18 +159,10 @@ var ElfDialog = {
 		}
 		$("body").find(".elfDialogMain")
 			.width(elfDialog.outerWidth())
-			.height(elfDialog.outerHeight());
+			.height(elfDialog.outerHeight())
+			.find(".elfDialogContent")
+			.height(elfDialog.innerHeight()-$(".elfDialogButtonBar").outerHeight()-$(".elfDialogTitle").outerHeight()-11);
 
-		//修正buttonBar的位置
-//		if($("body").find(".elfDialogButtonBar :button").length > 0){
-//			$("body").find(".elfDialog").css({
-//				"height" : "53px"
-//			}).end().find(".elfDialogButtonBar").css({
-//				"position" : "absolute",
-//				"bottom" : 0,
-//				"right" : 0
-//			});
-//		}
 	},
 	_setCenter : function(){
 		var viewportW = $(window).width();
@@ -190,12 +185,7 @@ var ElfDialog = {
                 ElfDialog.close();
             });
 		$(".elfDialogMain").before(elfDialogOverlay.hide());
-		//检查遮盖层进入方式
-		if(this.settings.fadeIn){
-			elfDialogOverlay.fadeIn(overlaySettings.fadeIn);
-		}else{
-			elfDialogOverlay.show();
-		}
+		elfDialogOverlay.fadeIn(overlaySettings.fadeIn);
 	}
 };
 $(function(){
